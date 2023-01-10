@@ -1,0 +1,22 @@
+.main {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(146 151 179 / 13%);
+    padding-left: 0;
+    margin: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(16 18 27 / 40%);
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    &:hover {
+        transform: scale(1.02);
+        background-color: rgba(16 18 27 / 40%);
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .main {
+        height: auto !important;
+    }
+}
