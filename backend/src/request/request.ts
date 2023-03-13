@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IAddActivity, ILogin, IUserSignUp } from '../types/toolTypes'
+import { IAddActivity, ILogin, ITag, IUserSignUp } from '../types/toolTypes'
 import 'dotenv/config'
 
 const url = process.env.SERVER_URL
@@ -35,6 +35,25 @@ export const addActivity = async (params: IAddActivity, token: string) => {
   }
   const data = await request.post<string>(
     `${url}/api/Activity/addActivity`,
+    params,
+    { headers }
+  )
+  return data
+}
+
+// 获取标签
+export const getAllTag = async () => {
+  const data = await request.get<ITag[]>(`${url}/api/User/GetAllTag`)
+  return data
+}
+
+// 覆盖标签
+export const coverUserTag = async (params: number[], token: string) => {
+  const headers = {
+    Authorization: `Bearer ${token}`
+  }
+  const data = await request.post<boolean>(
+    `${url}/api/User/CoverUserTag`,
     params,
     { headers }
   )
